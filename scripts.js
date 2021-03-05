@@ -2,6 +2,7 @@
         - merge lock button and hint pegs
         - proper game state managing
         - CSS animations
+        - remove event listeners for previous row
 */
 //Notes: There are 6^4 = 1296 combinations, so good luck brute force Checking.
 //Initialization
@@ -52,6 +53,11 @@ function lockClick(){
     document.getElementById('turn'+turn).getElementsByClassName("lock")[0].innerHTML = "✓"
     //Win state
     console.log(hints.black)
+    for(i=0;i<4;i++){   
+        socketDiv[i].removeEventListener('click', socketClick);    
+        socketDiv[i].removeEventListener('contextmenu', socketRClick);    
+    }
+    lockDiv[0].removeEventListener('click', lockClick);
     if(hints.black == 4){return gloriousVictory()}
     if(hints.black <= 4 && turn >= 8){return shamefulDisplay()}
     hintFill();
