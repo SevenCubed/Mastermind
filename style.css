@@ -1,26 +1,42 @@
 html,
 body {
-  height: 100%;
+  height: 90%;
 }
 
 body{
-  position: relative;
+  position: static;
   font-family: sans-serif;
   color: #fff;
   background-color: #cedcec;
 }
 
 .container {
-  width: 400px;
+  width: 500px;
   margin: 0 auto;
   position: relative;
 }
 
 .option,
-.socket {
+.socket{
   display: inline-block;
   border-radius: 50%;
   background-color: #918dc7;
+}
+
+.lock{
+    display: inline-block;
+    border-radius: 20%;
+    background-color: #918dc7;
+    height:20px;
+    width: 20px;
+    line-height: 20px;
+
+    vertical-align: middle;
+    color: #b5c0e3;
+    text-align: center;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 2px;
 }
 
 #rows {
@@ -35,32 +51,27 @@ body{
 
 .option,
 .code .socket,
-.row .socket {
+.row .socket{
   width: 40px;
   height: 40px;
   vertical-align: middle;
 }
 
 .code .socket + .socket,
-.row .socket + .socket { margin-left: 10px; }
+.row .socket + .socket,
+.lock { margin-left: 10px; }
 
 .code {
   border-bottom: 2px solid #323235;
   padding-bottom: 15px;
 }
 
-.secret {
+.secret{
   color: #b5c0e3;
   text-align: center;
   line-height: 40px;
   font-weight: 800;
   font-size: 16px;
-}
-
-.socket.peg {
-  -webkit-animation: bounceIn .4s;
-  -o-animation: bounceIn .4s;
-  animation: bounceIn .4s;
 }
 
 #hints {
@@ -88,8 +99,3 @@ body{
 
 .blackhint { background-color: #000; }
 .whitehint { background-color: #fff; }
-.socket.peg {
-    -webkit-animation: bounceIn .4s;
-    -o-animation: bounceIn .4s;
-    animation: bounceIn .4s;
-}
