@@ -2,7 +2,8 @@
         - merge lock button and hint pegs
         - proper game state managing
         - CSS animations
-        - remove event listeners for previous row
+        - rblack and white pegs overlap
+        
 */
 //Notes: There are 6^4 = 1296 combinations, so good luck brute force Checking.
 //Initialization
@@ -53,6 +54,8 @@ function lockClick(){
     document.getElementById('turn'+turn).getElementsByClassName("lock")[0].innerHTML = "✓"
     //Win state
     console.log(hints.black)
+    let socketDiv = document.getElementById('turn'+turn).getElementsByClassName("socket"),
+        lockDiv = document.getElementById('turn'+turn).getElementsByClassName("lock");
     for(i=0;i<4;i++){   
         socketDiv[i].removeEventListener('click', socketClick);    
         socketDiv[i].removeEventListener('contextmenu', socketRClick);    
@@ -87,7 +90,7 @@ function hintFill() {
     for(i=0;i<hints.black;i++){
         hintDiv[i].style.backgroundColor = "black";
     }
-    for(i=hints.black;i<hints.white;i++){
+    for(i=hints.black;i<hints.white+hints.black;i++){
         hintDiv[i].style.backgroundColor = "white";
     }
 }
