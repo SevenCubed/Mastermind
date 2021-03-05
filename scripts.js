@@ -46,7 +46,7 @@ function socketRClick(){
 }
 //Locks the current guess, compares to the secret and advances the turn
 function lockClick(){
-    //revealSecret(); //Debugging purposes only
+    //revealSecret(); //Debugging purposes only!
     if(Object.values(guess).includes(-1)){return alert('Please fill in all the sockets.')}
     checkCode(Object.values(guess))
     document.getElementById('turn'+turn).getElementsByClassName("lock")[0].innerHTML = "✓"
