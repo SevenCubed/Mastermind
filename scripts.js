@@ -15,11 +15,15 @@ let turn = 1,
     },
     hints = {black: 0, white: 0};
 const colors = ['crimson', 'darkolivegreen', 'goldenrod', 'royalblue', 'black', 'ivory']; //red, green, yellow, blue, black, white
-//Sets the next sockets as active and resets the guess
+
+//Sets the next sockets as active by adding listeners and resets the guess
 function socketInit(){
     let socketDiv = document.getElementById('turn'+turn).getElementsByClassName("socket"),
         lockDiv = document.getElementById('turn'+turn).getElementsByClassName("lock");
-    for(i=0;i<4;i++){   socketDiv[i].addEventListener('click', socketClick);    }
+    for(i=0;i<4;i++){   
+        socketDiv[i].addEventListener('click', socketClick);    
+        socketDiv[i].addEventListener('contextmenu', socketRClick);    
+    }
     lockDiv[0].addEventListener('click', lockClick);
     guess = {
     'socket 1': -1,
@@ -35,6 +39,11 @@ function socketClick(){
     event.target.style.backgroundColor = colors[guess[event.target.className]];
     console.log(guess)
 }
+function socketRClick(){
+    console.log('RIGHTCLICKYO')
+    guess[event.target.className] = (guess[event.target.className]>=0) ? guess[event.target.className]-1 : 5;
+    event.target.style.backgroundColor = colors[guess[event.target.className]];
+}
 //Locks the current guess, compares to the secret and advances the turn
 function lockClick(){
     revealSecret(); //Debugging purposes only
@@ -49,7 +58,7 @@ function lockClick(){
     turn++
     socketInit();
 }
-//SHAMEFUL DISPRAY
+//SHAMEFUL DISPLAY
 function shamefulDisplay(){
     revealSecret();
     alert('You were unable to crack the code in time. SHAMEFUL DISPLAY!');
