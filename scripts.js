@@ -1,7 +1,28 @@
 //Notes: There are 6^4 = 1296 combinations, so good luck brute force Checking.
-let turn = 0;
-let secret = [];
+//Init
+let turn = 1,
+    secret = [];
 const colors = ['red', 'green', 'yellow', 'blue', 'black', 'white'];
+//
+
+guess = {
+    'socket 1': -1,
+    'socket 2': -1,
+    'socket 3': -1,
+    'socket 4': -1
+}
+let targetDiv = document.getElementById('turn'+turn).getElementsByClassName("socket");
+console.log(targetDiv)
+for(i=0;i<4;i++){
+targetDiv[i].addEventListener('click', socketClick);
+}
+
+function socketClick(){
+    console.log(event.target.className)
+    guess[event.target.className] = (guess[event.target.className]<5) ? guess[event.target.className]+1 : 0;
+    event.target.style.backgroundColor = colors[guess[event.target.className]];
+}
+
 function generateCode() {
     for (i=0;i<4;i++){
     let n =  Math.floor(Math.random() * 6)
@@ -9,9 +30,9 @@ function generateCode() {
     }
     return secret;
 }
-function checkCode(guess){
+function checkCode(arr){
     let secretCheck = secret;
-    let guessCheck = guess;
+    let guessCheck = arr;
     let hints = {black: 0, white: 0};
     console.log(secret);
     console.log('Checking for position matches')

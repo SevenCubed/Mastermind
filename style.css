@@ -1,0 +1,95 @@
+html,
+body {
+  height: 100%;
+}
+
+body{
+  position: relative;
+  font-family: sans-serif;
+  color: #fff;
+  background-color: #cedcec;
+}
+
+.container {
+  width: 400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.option,
+.socket {
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #918dc7;
+}
+
+#rows {
+  display: inline-block;
+  background-color: #b5c0e3;
+  border-radius: 3px 0 0 3px;
+  padding: 15px 30px;
+  font-size: 0;
+}
+
+.row { margin-top: 15px; }
+
+.option,
+.code .socket,
+.row .socket {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+}
+
+.code .socket + .socket,
+.row .socket + .socket { margin-left: 10px; }
+
+.code {
+  border-bottom: 2px solid #323235;
+  padding-bottom: 15px;
+}
+
+.secret {
+  color: #b5c0e3;
+  text-align: center;
+  line-height: 40px;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.socket.peg {
+  -webkit-animation: bounceIn .4s;
+  -o-animation: bounceIn .4s;
+  animation: bounceIn .4s;
+}
+
+#hints {
+  vertical-align: bottom;
+  display: inline-block;
+  padding: 15px 20px;
+  background-color: #b5c0e3;
+  border-radius: 0 3px 3px 0;
+  font-size: 0;
+}
+
+.hint {
+  height: 40px;
+}
+
+.hint .row + .row { margin-top: 5px; }
+
+.hint .socket {
+  width: 10px;
+  height: 10px;
+}
+
+.hint .socket + .socket { margin-left: 5px; }
+.hint + .hint { margin-top: 15px; }
+
+.blackhint { background-color: #000; }
+.whitehint { background-color: #fff; }
+.socket.peg {
+    -webkit-animation: bounceIn .4s;
+    -o-animation: bounceIn .4s;
+    animation: bounceIn .4s;
+}
