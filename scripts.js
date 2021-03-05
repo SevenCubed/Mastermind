@@ -41,7 +41,7 @@ function socketClick(){
 }
 function socketRClick(){
     console.log('RIGHTCLICKYO')
-    guess[event.target.className] = (guess[event.target.className]>=0) ? guess[event.target.className]-1 : 5;
+    guess[event.target.className] = (guess[event.target.className]>0) ? guess[event.target.className]-1 : 5;
     event.target.style.backgroundColor = colors[guess[event.target.className]];
 }
 //Locks the current guess, compares to the secret and advances the turn
