@@ -20,7 +20,7 @@ body{
 .socket{
   display: inline-block;
   border-radius: 50%;
-  background-color: #918dc7;
+  background-color: #afacd6;
 }
 
 .lock{
@@ -30,7 +30,6 @@ body{
     height:20px;
     width: 20px;
     line-height: 20px;
-
     vertical-align: middle;
     color: #b5c0e3;
     text-align: center;
@@ -81,6 +80,38 @@ body{
   background-color: #b5c0e3;
   border-radius: 0 3px 3px 0;
   font-size: 0;
+}
+
+.activated {
+  background-color:#918dc7;
+}
+
+.activated:active {
+  animation: bounce .1s;
+}
+
+@keyframes bounce {
+  0%, 20%, 40%, 60%, 80%, 100% {
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(0.6);
+  }
+  40% {
+    transform: scale(0.8);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .hint {

@@ -1,32 +1,27 @@
 /*TODO:
         - merge lock button and hint pegs
         - proper game state managing
-        - CSS animations
-        - rblack and white pegs overlap
-        
 */
-//Notes: There are 6^4 = 1296 combinations, so good luck brute force Checking.
-//Initialization
+//Variables
 let turn = 1,
     secret = [],
     guess = {
         'socket 1': -1,
         'socket 2': -1,
         'socket 3': -1,
-        'socket 4': -1
-    },
+        'socket 4': -1 },
     hints = {black: 0, white: 0};
 const colors = ['crimson', 'darkolivegreen', 'goldenrod', 'royalblue', 'black', 'ivory']; //red, green, yellow, blue, black, white
-
 //Sets the next sockets as active by adding listeners and resets the guess
 function socketInit(){
     let socketDiv = document.getElementById('turn'+turn).getElementsByClassName("socket"),
         lockDiv = document.getElementById('turn'+turn).getElementsByClassName("lock");
     for(i=0;i<4;i++){   
         socketDiv[i].addEventListener('click', socketClick);    
-        socketDiv[i].addEventListener('contextmenu', socketRClick);    
+        socketDiv[i].addEventListener('contextmenu', socketRClick);
+        socketDiv[i].classList.toggle("activated");    
     }
-    lockDiv[0].addEventListener('click', lockClick);
+    lockDiv[0].addEventListener('click', lockClick); //can't use once: true, since that'll softlock if not all pegs are filled on click.
     guess = {
     'socket 1': -1,
     'socket 2': -1,
@@ -34,36 +29,39 @@ function socketInit(){
     'socket 4': -1
     }
 }
-//Writes the guesses to the guess object
+//Writes the guesses to the guess object on a click
 function socketClick(){
-    console.log(event.target.className)
-    guess[event.target.className] = (guess[event.target.className]<5) ? guess[event.target.className]+1 : 0;
-    event.target.style.backgroundColor = colors[guess[event.target.className]];
+    let socket = event.target.className.replace(' activated','');
+    console.log(socket);
+    guess[socket] = (guess[socket]<5) ? guess[socket]+1 : 0;
+    event.target.style.backgroundColor = colors[guess[socket]];
     console.log(guess)
 }
+//See above, but right click
 function socketRClick(){
-    console.log('RIGHTCLICKYO')
-    guess[event.target.className] = (guess[event.target.className]>0) ? guess[event.target.className]-1 : 5;
-    event.target.style.backgroundColor = colors[guess[event.target.className]];
+    let socket = event.target.className.replace(' activated','');
+    console.log(socket);
+    guess[socket] = (guess[socket]>0) ? guess[socket]-1 : 5;
+    event.target.style.backgroundColor = colors[guess[socket]];
+    console.log(guess)
 }
 //Locks the current guess, compares to the secret and advances the turn
 function lockClick(){
-    //revealSecret(); //Debugging purposes only!
+    revealSecret(); //Debugging purposes only!
     if(Object.values(guess).includes(-1)){return alert('Please fill in all the sockets.')}
-    checkCode(Object.values(guess))
+    checkCode(Object.values(guess));
     document.getElementById('turn'+turn).getElementsByClassName("lock")[0].innerHTML = "✓"
-    //Win state
-    console.log(hints.black)
     let socketDiv = document.getElementById('turn'+turn).getElementsByClassName("socket"),
         lockDiv = document.getElementById('turn'+turn).getElementsByClassName("lock");
     for(i=0;i<4;i++){   
         socketDiv[i].removeEventListener('click', socketClick);    
-        socketDiv[i].removeEventListener('contextmenu', socketRClick);    
+        socketDiv[i].removeEventListener('contextmenu', socketRClick);
+        socketDiv[i].classList.toggle("activated");
     }
     lockDiv[0].removeEventListener('click', lockClick);
-    if(hints.black == 4){return gloriousVictory()}
-    if(hints.black <= 4 && turn >= 8){return shamefulDisplay()}
     hintFill();
+    if(hints.black == 4){return gloriousVictory()} //Win
+    if(hints.black <= 4 && turn >= 8){return shamefulDisplay()} //Lose
     turn++
     socketInit();
 }
@@ -97,31 +95,25 @@ function hintFill() {
 //generates a new code
 function generateCode() {
     for (i=0;i<4;i++){
-    let n =  Math.floor(Math.random() * 6)
-    secret[i] = n; //colors[n?]
+    secret[i] = Math.floor(Math.random() * 6); 
     }
     return secret;
 }
 //compares the guess to the secret
 function checkCode(arr){
     let secretCheck = secret.slice(0),
-        guessCheck = arr;
+        guessCheck = arr.slice(0);
     hints = {black: 0, white: 0};
-    console.log(secret);
-    console.log('Checking for position matches')
-    for (i=0;i<4;i++){
     //check for positions
+    for (i=0;i<4;i++){
         if(secretCheck[i]==guessCheck[i]){
             console.log(`${secretCheck[i]} is in the correct position`);
             secretCheck[i]=guessCheck[i] = null;
             hints.black++;
         }
     }
-    console.log(secretCheck);
-    console.log(guessCheck);
-    console.log('Checking for color matches')
-    for (i=0;i<4;i++){
     //check for color matches
+    for (i=0;i<4;i++){
         if(guessCheck.includes(secretCheck[i]) && secretCheck[i]!=null){
             console.log(`${secretCheck[i]} is in the wrong position`);
             guessCheck[guessCheck.findIndex(n => n == secretCheck[i])] = null; //scrap the first element that matches, so it won't return in future .include checks
@@ -131,7 +123,7 @@ function checkCode(arr){
     }
     console.log(secretCheck);
     console.log(guessCheck);
-    console.log(secret)
+    console.log(secret);
     console.log(`There are ${hints.black} pegs in the correct position and an additional ${hints.white} pegs of the right color.`);
 }
 //First time launch
