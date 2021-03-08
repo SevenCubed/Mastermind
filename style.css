@@ -16,7 +16,7 @@ body{
   position: relative;
 }
 
-.option,
+
 .socket{
   display: inline-block;
   border-radius: 50%;
@@ -48,7 +48,6 @@ body{
 
 .row { margin-top: 15px; }
 
-.option,
 .code .socket,
 .row .socket{
   width: 40px;
@@ -90,6 +89,21 @@ body{
   animation: bounce .1s;
 }
 
+.hint {
+  height: 40px;
+}
+
+.hint .row + .row { margin-top: 5px; }
+
+.hint .socket {
+  width: 10px;
+  height: 10px;
+}
+
+.hint .socket + .socket { margin-left: 5px; }
+.hint + .hint { margin-top: 15px; }
+
+
 @keyframes bounce {
   0%, 20%, 40%, 60%, 80%, 100% {
     transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
@@ -114,19 +128,3 @@ body{
   }
 }
 
-.hint {
-  height: 40px;
-}
-
-.hint .row + .row { margin-top: 5px; }
-
-.hint .socket {
-  width: 10px;
-  height: 10px;
-}
-
-.hint .socket + .socket { margin-left: 5px; }
-.hint + .hint { margin-top: 15px; }
-
-.blackhint { background-color: #000; }
-.whitehint { background-color: #fff; }

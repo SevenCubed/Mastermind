@@ -30,7 +30,7 @@ function socketInit(){
     }
 }
 //Writes the guesses to the guess object on a click
-function socketClick(){
+function socketClick(event){
     let socket = event.target.className.replace(' activated','');
     console.log(socket);
     guess[socket] = (guess[socket]<5) ? guess[socket]+1 : 0;
@@ -38,7 +38,7 @@ function socketClick(){
     console.log(guess)
 }
 //See above, but right click
-function socketRClick(){
+function socketRClick(event){
     let socket = event.target.className.replace(' activated','');
     console.log(socket);
     guess[socket] = (guess[socket]>0) ? guess[socket]-1 : 5;
@@ -65,12 +65,12 @@ function lockClick(){
     turn++
     socketInit();
 }
-//SHAMEFUL DISPLAY
+//Loss state
 function shamefulDisplay(){
     revealSecret();
-    alert('You were unable to crack the code in time. SHAMEFUL DISPLAY!');
+    alert('You were unable to crack the code in time.');
 }
-//A GLORIOUS VICTORY WILL SOON BE YOURS
+//Win state
 function gloriousVictory(){
     revealSecret();
     alert(`Congratulations, you have won the game.`);
@@ -82,11 +82,11 @@ function revealSecret() {
         document.getElementsByClassName('secret socket')[i].innerHTML = '';
     }
 }
-//fills the hints sockets
+//fills the hint sockets
 function hintFill() {
     let hintDiv = document.getElementById('hint'+turn).getElementsByClassName("socket")
     for(i=0;i<hints.black;i++){
-        hintDiv[i].style.backgroundColor = "black";
+        hintDiv[i].style.backgroundColor = "black"; 
     }
     for(i=hints.black;i<hints.white+hints.black;i++){
         hintDiv[i].style.backgroundColor = "white";
