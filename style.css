@@ -4,7 +4,7 @@ body {
 }
 
 body{
-  position: static;
+  position: relative;
   font-family: sans-serif;
   color: #fff;
   background-color: #cedcec;
@@ -14,6 +14,7 @@ body{
   width: 500px;
   margin: 0 auto;
   position: relative;
+  z-index: 1
 }
 
 
@@ -24,29 +25,35 @@ body{
 }
 
 .lock{
-    display: inline-block;
-    border-radius: 20%;
-    background-color: #918dc7;
-    height:20px;
-    width: 20px;
-    line-height: 20px;
-    vertical-align: middle;
-    color: #b5c0e3;
-    text-align: center;
-    font-weight: 800;
-    font-size: 16px;
-    padding: 2px;
+  display: inline-block;
+  border-radius: 20%;
+  background-color: #afacd6;
+  height:20px;
+  width: 20px;
+  line-height: 20px;
+  vertical-align: middle;
+  color: #b5c0e3;
+  text-align: center;
+  font-weight: 800;
+  font-size: 16px;
+  padding: 4px;
+  position: absolute;
+  top: 0;
+  left: 0; 
+  z-index: 10;
 }
 
 #rows {
   display: inline-block;
+  position: relative;
   background-color: #b5c0e3;
   border-radius: 3px 0 0 3px;
   padding: 15px 30px;
   font-size: 0;
 }
 
-.row { margin-top: 15px; }
+.row { margin-top: 15px;
+z-index: 0; }
 
 .code .socket,
 .row .socket{
@@ -55,12 +62,11 @@ body{
   vertical-align: middle;
 }
 
-.code .socket + .socket,
-.row .socket + .socket,
-.lock { margin-left: 10px; }
+.row .socket + .socket
+ { margin-left: 10px; }
 
 .code {
-  border-bottom: 2px solid #323235;
+  border-bottom: 2px solid #30303b;
   padding-bottom: 15px;
 }
 
@@ -75,10 +81,14 @@ body{
 #hints {
   vertical-align: bottom;
   display: inline-block;
-  padding: 15px 20px;
+  padding: 11px 20px;
   background-color: #b5c0e3;
   border-radius: 0 3px 3px 0;
   font-size: 0;
+}
+
+.test {
+  display: inline-block;
 }
 
 .activated {
@@ -91,9 +101,15 @@ body{
 
 .hint {
   height: 40px;
+  position: relative;
+  z-index: 10;
 }
 
 .hint .row + .row { margin-top: 5px; }
+
+.socket + .hint {
+  margin-left: 5px;
+}
 
 .hint .socket {
   width: 10px;
@@ -101,9 +117,23 @@ body{
 }
 
 .hint .socket + .socket { margin-left: 5px; }
-.hint + .hint { margin-top: 15px; }
+.hint + .hint { margin-top: 14px; }
 
-
+.modal {
+  display: none;
+  z-index: 100;
+  position: absolute;
+  top: 30%;
+  max-width: 100%;
+  max-height: 100%;
+  color: white;
+  background-color:#918dc7;
+  padding: 15px;
+  margin: 5px;
+  animation: slide 1s;
+  animation-timing-function: ease-out;
+}
+/* I got this animation from the internet and tweaked it to my liking */
 @keyframes bounce {
   0%, 20%, 40%, 60%, 80%, 100% {
     transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
@@ -128,3 +158,7 @@ body{
   }
 }
 
+@keyframes slide {
+  0% { transform: translateX(-900px)}
+  100% { transform: translateX(0) }
+}

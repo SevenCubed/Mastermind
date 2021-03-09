@@ -2,163 +2,242 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opdracht 14 - JS Mastermind</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Anton&&family=Gloria+Hallelujah&ffamily=Heebo:wght@800&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opdracht 14 - JS Mastermind</title>
+  <link rel="stylesheet" href="style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&&family=Gloria+Hallelujah&ffamily=Heebo:wght@800&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
-    <div class="container" oncontextmenu="return false;">
-        <div id="rows">
-          <div class="code row">
-            <div class="secret socket">?</div>
-            <div class="secret socket">?</div>
-            <div class="secret socket">?</div>
-            <div class="secret socket">?</div>
-          </div>
-          <div class="row" id="turn8">
-            <div class="socket 1" ></div>
-            <div class="socket 2"></div>
-            <div class="socket 3"></div>
-            <div class="socket 4"></div>
-            <div class="lock">O</div>
-          </div>
-          <div class="row" id="turn7">
-            <div class="socket 1"></div>
-            <div class="socket 2"></div>
-            <div class="socket 3"></div>
-            <div class="socket 4"></div>
-            <div class="lock">O</div>
-          </div>
-          <div class="row" id="turn6">
-            <div class="socket 1"></div>
-            <div class="socket 2"></div>
-            <div class="socket 3"></div>
-            <div class="socket 4"></div>
-            <div class="lock">O</div>
-          </div>
-          <div class="row" id="turn5">
-            <div class="socket 1"></div>
-            <div class="socket 2"></div>
-            <div class="socket 3"></div>
-            <div class="socket 4"></div>
-            <div class="lock">O</div>
-          </div>
-          <div class="row" id="turn4">
-            <div class="socket 1"></div>
-            <div class="socket 2"></div>
-            <div class="socket 3"></div>
-            <div class="socket 4"></div>
-            <div class="lock">O</div>
-          </div>
-          <div class="row" id="turn3">
-            <div class="socket 1"></div>
-            <div class="socket 2"></div>
-            <div class="socket 3"></div>
-            <div class="socket 4"></div>
-            <div class="lock">O</div>
-          </div>
-          <div class="row" id="turn2">
-            <div class="socket 1"></div>
-            <div class="socket 2"></div>
-            <div class="socket 3"></div>
-            <div class="socket 4"></div>
-            <div class="lock">O</div>
-          </div>
-          <div class="row" id="turn1">
-            <div class="socket 1"></div>
-            <div class="socket 2"></div>
-            <div class="socket 3"></div>
-            <div class="socket 4"></div>
-            <div class="lock">O</div>
-          </div>
+  <div class="container" oncontextmenu="return false;">
+    <div id="rows">
+      <div class="code row">
+        <div class="secret socket">?</div>
+        <div class="secret socket">?</div>
+        <div class="secret socket">?</div>
+        <div class="secret socket">?</div>
+      </div>
+      <div class="row" id="turn12">
+        <div class="socket 1"></div>
+        <div class="socket 2"></div>
+        <div class="socket 3"></div>
+        <div class="socket 4"></div>
+      </div>
+      <div class="row" id="turn11">
+        <div class="socket 1"></div>
+        <div class="socket 2"></div>
+        <div class="socket 3"></div>
+        <div class="socket 4"></div>
+      </div>
+      <div class="row" id="turn10">
+        <div class="socket 1"></div>
+        <div class="socket 2"></div>
+        <div class="socket 3"></div>
+        <div class="socket 4"></div>
+      </div>
+      <div class="row" id="turn9">
+        <div class="socket 1"></div>
+        <div class="socket 2"></div>
+        <div class="socket 3"></div>
+        <div class="socket 4"></div>
+      </div>
+      <div class="row" id="turn8">
+        <div class="socket 1"></div>
+        <div class="socket 2"></div>
+        <div class="socket 3"></div>
+        <div class="socket 4"></div>
+      </div>
+      <div class="row" id="turn7">
+        <div class="socket 1"></div>
+        <div class="socket 2"></div>
+        <div class="socket 3"></div>
+        <div class="socket 4"></div>
+      </div>
+      <div class="row" id="turn6">
+        <div class="socket 1"></div>
+        <div class="socket 2"></div>
+        <div class="socket 3"></div>
+        <div class="socket 4"></div>
+      </div>
+      <div class="row" id="turn5">
+        <div class="socket 1"></div>
+        <div class="socket 2"></div>
+        <div class="socket 3"></div>
+        <div class="socket 4"></div>
+      </div>
+      <div class="row" id="turn4">
+        <div class="socket 1"></div>
+        <div class="socket 2"></div>
+        <div class="socket 3"></div>
+        <div class="socket 4"></div>
+      </div>
+      <div class="row" id="turn3">
+        <div class="socket 1"></div>
+        <div class="socket 2"></div>
+        <div class="socket 3"></div>
+        <div class="socket 4"></div>
+      </div>
+      <div class="row" id="turn2">
+        <div class="socket 1"></div>
+        <div class="socket 2"></div>
+        <div class="socket 3"></div>
+        <div class="socket 4"></div>
+      </div>
+      <div class="row" id="turn1">
+        <div class="socket 1"></div>
+        <div class="socket 2"></div>
+        <div class="socket 3"></div>
+        <div class="socket 4"></div>
+      </div>
+    </div>
+    <div id="hints">
+      <div class="hint" id="hint12">
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
         </div>
-  
-        <div id="hints">
-            <div class="hint" id="hint8">
-              <div class="row">
-                <div class="socket"></div>
-                <div class="socket"></div>
-              </div>
-              <div class="row">
-                <div class="socket"></div>
-                <div class="socket"></div>
-              </div>
-            </div>
-            <div class="hint" id="hint7">
-              <div class="row">
-                <div class="socket"></div>
-                <div class="socket"></div>
-              </div>
-              <div class="row">
-                <div class="socket"></div>
-                <div class="socket"></div>
-              </div>
-            </div>
-            <div class="hint" id="hint6">
-              <div class="row">
-                <div class="socket"></div>
-                <div class="socket"></div>
-              </div>
-              <div class="row">
-                <div class="socket"></div>
-                <div class="socket"></div>
-              </div>
-            </div>
-            <div class="hint" id="hint5">
-              <div class="row">
-                <div class="socket"></div>
-                <div class="socket"></div>
-              </div>
-              <div class="row">
-                <div class="socket"></div>
-                <div class="socket"></div>
-              </div>
-            </div>
-            <div class="hint" id="hint4">
-              <div class="row">
-                <div class="socket"></div>
-                <div class="socket"></div>
-              </div>
-              <div class="row">
-                <div class="socket"></div>
-                <div class="socket"></div>
-              </div>
-            </div>
-            <div class="hint" id="hint3">
-              <div class="row">
-                <div class="socket"></div>
-                <div class="socket"></div>
-              </div>
-              <div class="row">
-                <div class="socket"></div>
-                <div class="socket"></div>
-              </div>
-            </div>
-            <div class="hint" id="hint2">
-              <div class="row">
-                <div class="socket"></div>
-                <div class="socket"></div>
-              </div>
-              <div class="row">
-                <div class="socket"></div>
-                <div class="socket"></div>
-              </div>
-            </div>
-            <div class="hint" id="hint1">
-              <div class="row">
-                <div class="socket"></div>
-                <div class="socket"></div>
-              </div>
-              <div class="row">
-                <div class="socket"></div>
-                <div class="socket"></div>
-              </div>
-            </div>
-          </div>
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="lock">O</div>
+      </div>
+      <div class="hint" id="hint11">
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="lock">O</div>
+      </div>
+      <div class="hint" id="hint10">
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="lock">O</div>
+      </div>
+      <div class="hint" id="hint9">
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="lock">O</div>
+      </div>
+      <div class="hint" id="hint8">
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="lock">O</div>
+      </div>
+      <div class="hint" id="hint7">
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="lock">O</div>
+      </div>
+      <div class="hint" id="hint6">
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="lock">O</div>
+      </div>
+      <div class="hint" id="hint5">
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="lock">O</div>
+      </div>
+      <div class="hint" id="hint4">
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="lock">O</div>
+      </div>
+      <div class="hint" id="hint3">
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="lock">O</div>
+      </div>
+      <div class="hint" id="hint2">
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="lock">O</div>
+      </div>
+      <div class="hint" id="hint1">
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="row">
+          <div class="socket"></div>
+          <div class="socket"></div>
+        </div>
+        <div class="lock">O</div>
 
+      </div>
+      <!--- Modals-->
+    </div>
+    <div class="modal" id="victory">
+      <h1>Congratulations!</h1>
+      <p>You have succesfully cracked the code.</p>
+    </div>
+    <div class="modal" id="defeat">
+      <h1>Defeat!</h1>
+      <p>You were unable to crack the code in time...</p>
+      <p>Refresh and try again?</p>
+    </div>
     <script type="text/javascript" src="scripts.js"></script>
 </body>
 
